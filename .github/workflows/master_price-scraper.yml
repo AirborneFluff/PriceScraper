@@ -28,6 +28,7 @@ jobs:
           npm run build
 
       - name: Set up .NET Core
+        working-directory: ./API
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
