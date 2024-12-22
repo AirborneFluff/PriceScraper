@@ -17,6 +17,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.MapGet("api/scrape-item", async (IWebScraper webScraper, [FromQuery] string uniqueCode) =>
     {
@@ -30,5 +31,7 @@ app.MapGet("api/scrape-item", async (IWebScraper webScraper, [FromQuery] string 
     })
     .WithName("ScrapeItem")
     .WithOpenApi();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
